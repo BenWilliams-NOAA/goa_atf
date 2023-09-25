@@ -1,0 +1,20 @@
+#_Number_of_years with specified catch
+5
+# Number of species
+1
+# data files for each species
+data/atf.dat
+# ABC Multipliers
+1
+# Population scalars
+1000
+# Number of TAC model categories
+1
+# TAC model indices (for aggregating)
+1
+# Catch in each future year
+2021	9988.4091 # Finalized previous year catch
+2022	11634.7398 # Finalized previous year catch
+2023	9685.43222846122 # Estimated from catch thru 2023-09-19 with expansion factor = 1.254
+2024	17561 # Estimated as Max F scenario catch * yieldratio of 0.147
+2025	15504 # Estimated as Max F scenario catch * yieldratio of 0.147

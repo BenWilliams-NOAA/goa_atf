@@ -1,0 +1,17 @@
+# Figures
+
+```{r fig1, fig.cap = "Line plot of catch divided by age 4+ total biomass estimates of abundance for Gulf of Alaska dusky rockfish." ,fig.cap="Gulf of Alaska dusky rockfish catch/age 4+ biomass ratio with approximate 95\\% confidence intervals. Observed catch values were used for 1991-2022, the 2023 catch values were estimated using an expansion factor. The horizontal dashed line is the mean value for the entire dataset."}
+
+knitr::include_graphics(here::here(year, "figs", "catch_bio.png"))
+```
+
+```{r fig2, fig.cap = "Line plot of geostatistical and design-based model estimates of abundance for Gulf of Alaska trawl surveys." ,fig.cap="Geostatistical model (VAST) and design-based model estimates of trawl survey abundance for dusky rockfish in the Gulf of Alaska. Shaded areas are 95\\% confidence intervals, the dashed lines are the data means."}
+
+knitr::include_graphics(here::here(year, "figs", "bts_biomass.png"))
+```
+
+```{r fig3, fig.cap = "Line plot of apportionment in the Gulf of Alaska by management region." ,fig.cap="Survey biomass (design-based) and random effects model output for GOA dusky rockfish by management region. 95\\% confidence intervals are shown for the survey biomass (error bars) and for the random effects estimates of survey biomass (shaded area).", eval = FALSE}
+
+knitr::include_graphics(here::here(year, "figs", "apportion.png"))
+```
+

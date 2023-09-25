@@ -1,0 +1,82 @@
+## Area Apportionment
+
+The following table shows the recommended ABC apportionment for `r year+1` and `r year+2`. 
+Please refer to the *Area Allocation of Harvests* section of last year's assessment [@Shotwell2022] for information regarding the apportionment rationale for GOA dusky rockfish.
+
+```{r}
+# apportionment table example
+# appo <- safe::apportion
+
+# Note: entered these values by hand
+
+appo <- data.frame(X = c(NA, 2024, 2024, 2025, 2025),
+           X1 = c("", "abc", "ofl", "abc", "ofl"),
+           Western = c(25.5, 144, NA, 140, NA),
+           Central = c(54.4, 7335, NA, 7359, NA),
+           Eastern = c(20.1, 114, NA, 110, NA),
+           Total = c(100, 7593, 9244, 7359, 8959))
+
+flextable::flextable(appo[-1,]) %>% 
+    flextable::add_header_row(values = paste0(appo[1,], "%"), top=FALSE) %>%
+    flextable::border_remove() %>% 
+    flextable::compose(i=1, j=1:2, part='header', 
+                       value=flextable::as_paragraph('')) %>%
+    flextable::compose(i=2, j=1:2, part='header', 
+                        value=flextable::as_paragraph('Area Apportionment')) %>% 
+    flextable::merge_h(i=1:2, part = "header") %>% 
+    flextable::font(fontname = "Times New Roman", part = "all") %>%
+    flextable::fontsize(size = 11, part = "all") %>% 
+    flextable::align(j = 1, part = "all", align="left") %>% 
+     flextable::compose(i = 1:2, j = 1, 
+                       value = flextable::as_paragraph(as.character(year)), 
+                       part = "body") %>% 
+    flextable::compose(i = 3:4, j = 1, 
+                       value = flextable::as_paragraph(as.character(year+1)), 
+                       part = "body")  %>% 
+    flextable::compose(i = 1:4, j = 2, 
+                       value = flextable::as_paragraph(rep(c('ABC (t)', 'OFL (t)'), 2)), 
+                       part = "body") %>% 
+    # flextable::height(height = 0.2, part='body') %>% 
+    # flextable::hrule(rule = "exact") %>% 
+    flextable::hline_top(part='all') %>% 
+    flextable::hline_bottom() 
+  
+```
+
+Amendment 41 prohibited trawling in the Eastern area east of 140° W longitude. 
+The ratio of biomass obtainable in the W. Yakutat area (between 147° W and 140° W) is 0.33. 
+This results in the following apportionment to the W. Yakutat area:
+
+
+```{r}
+appo2 <- data.frame(X = 2024:2025,
+                    X.1 = c("abc", 'abc'),
+                    w_yak = c(84, 81),
+                    e_yak = c(30, 29))
+
+flextable::flextable(appo2) %>% 
+  flextable::border_remove() %>% 
+  flextable::font(fontname = "Times New Roman", part = "all") %>%
+  flextable::fontsize(size = 11, part = "all") %>%
+  flextable::compose(i = 1, j = 1, 
+                       value = flextable::as_paragraph(as.character(year)), 
+                       part = "body") %>% 
+  flextable::compose(i = 2, j = 1, 
+                       value = flextable::as_paragraph(as.character(year+1)), 
+                       part = "body") %>% 
+  flextable::compose(i = 1:2, j = 2, 
+                       value = flextable::as_paragraph(rep('ABC (t)', 2)), 
+                       part = "body") %>% 
+  flextable::compose(j=1:2, part='header', 
+                      value=flextable::as_paragraph('')) %>% 
+  flextable::compose(j=3, part='header', 
+                      value=flextable::as_paragraph('W. Yakutat')) %>% 
+    flextable::compose(j=4, part='header', 
+                      value=flextable::as_paragraph('E. Yakutat/Southeast')) %>% 
+  flextable::width(j = 3, width = 1) %>% 
+  flextable::width(j = 4, width = 1.5) %>% 
+          flextable::hline_top(part='all') %>% 
+    flextable::hline_bottom() %>% 
+  flextable::align(j = 1, part = "body", align="left")
+  
+```

@@ -1,0 +1,30 @@
+## Responses to SSC and Plan Team Comments on Assessments in General
+
+> "The SSC revised and clarified the recommendation to maintain the status quo and only produce risk tables for full assessments (rather than all assessments, as indicated in the subgroup recommendation).” (SSC, June 2021)
+
+A risk table has been included in this full assessment.
+
+> "The Team recommends all GOA authors evaluate any bottom trawl survey information used in their assessment prior to 1990 including the 1984 and 1987 surveys and conduct sensitivity analyses to evaluate their usefulness to the assessment. This may apply for Aleutian Islands surveys but this was only raised during GOA assessment considerations." (PT, November 2021)
+
+In recent assessments survey biomass estimates from 1984 and 1987 (note that age and size compistion data were not included) have been included in the survey biomass estimate, however those surveys used different vessels and gear and are not directly comparable to survey data from 1990+. 
+A suite of incremental models were run to investigate the effects of removing 1980s survey data from the assessment.
+Therefore they have been excluded from this assessment going forward.
+
+## Responses to SSC and Plan Team Comments Specific to this Assessment
+
+
+> "The SSC has also requested diagnostics to evaluate VAST model fit and suggests the author frame the discussion of these diagnostics in a species-specific manner, including consideration of the life history of the species. 
+For example, the use of the delta-gamma observation model would seem to be appropriate for a species with patchy survey distribution. 
+However, the implementation of this VAST-GAP recommendation resulted in a large increase in the interannual variability of the VAST survey estimates, which the SSC notes may be biologically implausible for a long-lived species such as dusky rockfish. 
+The SSC also supports the GOA GPT recommendation to further explore the number of knots that are optimal for this species. 
+Finally, the SSC requests that design-based estimates of survey biomass be included in comparisons with VAST model estimates. 
+
+> The SSC requests the assessment author justify the use of the new parameterization of VAST specifically as it relates to dusky rockfish. Past SSC discussions regarding the general implementation of VAST in assessments precluded a highly prescriptive approach and specifically recommended allowing for some species-specific adaptations of the VAST framework (October 2020)
+
+A suite of VAST parameterizations, associated diagnostics and design-based survey estimates have been explored and are provided as an appendix. 
+The author's recommended model uses a lognormal error model instead of the GAP default model.
+
+> The SSC registers concern with the large positive retrospective pattern in the recommended model and suggests that further investigation of this be a very high priority. (January 2020)
+
+Issues with the retrospective pattern are addressed with the author's recommended model, changing the Mohn's rho value from 0.51 to -0.123.
+

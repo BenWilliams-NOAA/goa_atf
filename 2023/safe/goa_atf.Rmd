@@ -1,0 +1,138 @@
+---
+params:
+  chapter: 7
+  species: "arrowtooth flounder"
+  species_complex: "no"
+  area: "Gulf of Alaska"
+  tier: 3
+author: "S. Kalei Shotwell and Benjamin C. Williams"
+date: "November 2023"
+
+# don't do anything below this line unless you are cool with the consequences
+output:
+  bookdown::html_document2:
+     reference_docx: "template.docx"
+     toc: false
+     number_sections: false
+     css: "styles.css"
+     pandoc_args:  
+       - '--lua-filter=scholarly-metadata.lua'
+       - '--lua-filter=author-info-blocks.lua'
+
+always_allow_html: true        
+fontsize: 11pt
+geometry:
+  - top=1in
+  - bottom=1in
+  - left=1in
+  - right=1in     
+fig_caption: true
+bibliography: "safe_bibby.bib"
+csl: "fishfish.csl"
+
+header-includes:
+  - \usepackage(amsmath) # for cases in equations
+  - \newcommand{\beginsupplement}{
+      \setcounter{table}{0}  
+      \renewcommand{\thetable}{S12-\arabic{table}} 
+      \setcounter{figure}{0} 
+      \renewcommand{\thefigure}{S12-\arabic{figure}}
+    }
+  
+---
+
+```{r setup, include=FALSE, echo = FALSE}
+# remotes::install_github("crsh/rmdfiltr")
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.pos = "!h", out.extra = "", fig.align = "center")
+```
+
+```{r}
+if(params$species_complex=="no"){
+   title = paste0(params$chapter, ". Assessment of the ", tools::toTitleCase(params$species), " Stock in the ", params$area)
+  } else {
+    title = paste0(params$chapter, ". Assessment of the ", tools::toTitleCase(params$species), " Stock Complex in the ", params$area)  
+  }
+
+
+```
+
+---
+title: `r title`
+---
+
+```{r load, warning=F, message=F}
+# load
+library(safe)
+# utility function
+comma <- function(x) format(round(as.numeric(x), digits = 0), big.mark = ",")
+
+# globals
+folder = "update"
+species = params$species
+year = yr = 2023
+data_pull = read.table(here::here(year, "data", "raw", "data_called.txt"))[2,1]
+data_pull2 = stringr::str_sub(data_pull, 6, 10)
+
+yld = vroom::vroom(here::here(year, "data", "output", "yld_rat.csv"))
+prj = readLines(here::here(year, folder, "proj", "model", "data", "atf_spcat.dat"))
+
+# auth_f = vroom::vroom(here::here(year, folder, "proj", "author_f", "yld_rat.csv"))
+c0 = comma(yld$catch)
+c1 = comma(round(yld$proj_catch)) # estimated catch in current year
+c2 = comma(stringr::str_sub(prj[grep(year+1, prj)], 6, 10)) # proj catch year + 1
+c3 = comma(stringr::str_sub(prj[grep(year+2, prj)], 6, 10)) # proj catch yera + 2
+
+exec_summ <- vroom::vroom(here::here(year, folder, "processed", "exec_summ.csv"))
+
+tier = exec_summ[2,4]
+tot = comma(exec_summ[3,4])
+
+ofl = comma(exec_summ[11,4])
+ofl0 = comma(3676)
+sb1 = comma(exec_summ[4,4])
+sb2 = comma(exec_summ[4,5])
+b35 = comma(exec_summ[7,4])
+b40 = comma(exec_summ[6,4])
+b100 = comma(exec_summ[5,4])
+
+f40 = exec_summ[8,4]
+f35 = exec_summ[10,4]
+
+# bring in as numeric
+abc = as.numeric(exec_summ[13,4])
+abc0 = as.numeric(exec_summ[13,2])
+abc01 = as.numeric(exec_summ[13,3])
+
+# calculate percents
+perc = round((abc-abc0)/abc0 * 100)
+perc1 = round((abc-abc01)/abc01 * 100)
+
+# change to text
+
+abc = comma(abc)
+abc0 = comma(abc0)
+
+```
+
+```{r, child="01-summary.Rmd", eval = T}
+```
+
+```{r, child="02-responses.Rmd", eval = T}
+```
+
+\pagebreak
+
+\allsectionsfont{\centering}
+
+# References
+
+<div id="refs"></div>
+
+```{r, child="11-tables.Rmd", eval = F}
+```
+
+\pagebreak
+
+```{r, child="12-figures.Rmd", eval = T}
+```
+
