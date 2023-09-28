@@ -7,24 +7,24 @@ library(afscassess)
 # globals ----
 year <- 2023
 species <- "ARTH"
-TAC <- c(96969, 97472, 96501) # last three years of tac year-3, year-2, year-1
+TAC <- c(96969, 97372, 96501) # last three years of tac year-3, year-2, year-1
 rec_age = 1 # recruitmemt age
 
 # setup ----
-setup_folders(year)
+# setup_folders(year)
 # accepted_model(2021, "model_name", 2023)
 
 # query data ----
 goa_atf(year, off_yr = TRUE)
 clean_catch(year, species, TAC = TAC)
-bts_biomass(year, rmv_yrs = c(1984, 1987))
+bts_biomass(year)
 
 # run proj ----
 proj_ak(year=2023, last_full_assess = 2021, species="atf", region="goa", off_yr=TRUE, folder = "update", rec_age = rec_age)
 
 # setup for next year
 setup_folders(year+1)
-# accepted_model(2022, "model_name", 2024)
+# accepted_model(2021, "model_name", 2024)
 
 # create figures ----
 dir.create(here::here(year, "figs"))

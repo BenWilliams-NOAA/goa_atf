@@ -1,12 +1,12 @@
 # Executive Summary 
 
-Gulf of Alaska arrowtooth flounder (*Atheresthes stomas*) have historically been assessed on a biennial stock assessment schedule to coincide with the availability of new trawl survey data (odd year surveys). 
+Gulf of Alaska `r species` (*Atheresthes stomas*) have historically been assessed on a biennial stock assessment schedule to coincide with the availability of new trawl survey data (odd year surveys). 
 In 2017, the Alaska Fisheries Science Center (AFSC) participated in a stock assessment prioritization process. 
 It was recommended that the Gulf of Alaska (GOA) arrowtooth flounder change to a quadrennial stock assessment schedule with a full stock assessment produced every four years and a harvest projection produced in the alternate years. 
 The projection model is updated with new catch information and results are used to recommend harvest levels for the following two years. 
 This incorporates the most current catch information without re-estimating model parameters and biological reference points.
 
-The GOA arrowtooth flounder is classified as a Tier 3 stock and is assessed using a statistical age-structure model.
+The GOA `r species` is classified as a Tier `r tier` stock and is assessed using a statistical age-structure model.
 This assessment consists of a population model, which uses survey and fishery data to generate a historical time series of population estimates, and a projection model, which uses results from the population model to predict future population estimates and recommended harvest levels. 
 The data used in this assessment includes total catch biomass, fishery age and size compositions, trawl survey abundance estimates, and trawl survey age compositions. 
 
